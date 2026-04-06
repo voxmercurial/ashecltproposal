@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashe CLT — Affordable Homes for Ashe County</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:#2D5016; --forest-mid:#3a6b1c; --forest-light:#e8f0de; --forest-pale:#f4f8ee;
+  --gold:#C4872D; --gold-hover:#a3701e; --gold-light:#fdf3e3;
+  --earth:#8B5E3C; --cream:#FAFAF6; --white:#ffffff;
+  --charcoal:#1a1a18; --text:#2c2c29; --muted:#5f5e58; --border:#e0ded6;
+  --radius:10px; --radius-lg:16px; --radius-xl:22px;
+  --shadow:0 2px 16px rgba(0,0,0,.07); --shadow-md:0 6px 32px rgba(0,0,0,.12);
+  --danger:#c0392b; --danger-light:#fdf0ee;
+  --info:#1a5f9e; --info-light:#e8f2fb;
+  --success:#2d7a3a; --success-light:#eaf5ec;
+  --warning:#b8760a; --warning-light:#fef8ec;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--text);background:var(--cream);line-height:1.65}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+button{font-family:'DM Sans',sans-serif;cursor:pointer}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:70px;box-shadow:var(--shadow)}
+.nav-logo{display:flex;align-items:center;gap:0}
+.nav-logo img{height:46px;width:auto;display:block}
+.nav-logo-mark{display:none}
+.nav-wordmark{display:none}
+.nav-links{display:flex;align-items:center;gap:1.75rem}
+.nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--forest)}
+.nav-ctas{display:flex;align-items:center;gap:.75rem}
+.btn-signin{background:none;border:1.5px solid var(--border);padding:8px 18px;border-radius:50px;font-size:.85rem;font-weight:500;color:var(--text);transition:all .2s}
+.btn-signin:hover{border-color:var(--forest);color:var(--forest)}
+.btn-donate-nav{background:var(--gold);color:var(--white)!important;padding:9px 20px;border-radius:50px;font-size:.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:all .2s;border:none}
+.btn-donate-nav:hover{background:var(--gold-hover);transform:translateY(-1px)}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none}.page.active{display:block}
+
+/* ── HERO ── */
+.hero{min-height:86vh;background:linear-gradient(155deg,#1b3a0c 0%,#2D5016 50%,#3a6b1c 100%);display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-text{padding:5rem 3rem 5rem 5rem;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.9);font-size:.78rem;font-weight:500;letter-spacing:.05em;padding:6px 16px;border-radius:50px;margin-bottom:2rem;border:1px solid rgba(255,255,255,.18)}
+.hero-badge span{width:6px;height:6px;background:#a3d977;border-radius:50%;display:inline-block}
+.hero h1{font-size:clamp(2.2rem,3.5vw,3.4rem);color:var(--white);font-weight:700;margin-bottom:1.5rem;line-height:1.15}
+.hero h1 em{color:#b8e87a;font-style:normal}
+.hero-sub{color:rgba(255,255,255,.8);font-size:1.05rem;max-width:480px;margin-bottom:2.5rem;font-weight:300}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-hero-primary{background:var(--gold);color:var(--white);padding:14px 32px;border-radius:50px;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;transition:all .2s;box-shadow:0 4px 24px rgba(196,135,45,.4)}
+.btn-hero-primary:hover{background:var(--gold-hover);transform:translateY(-2px);box-shadow:0 6px 32px rgba(196,135,45,.55)}
+.btn-hero-sec{color:rgba(255,255,255,.88);border:1.5px solid rgba(255,255,255,.35);padding:13px 26px;border-radius:50px;font-weight:500;font-size:.95rem;transition:all .2s}
+.btn-hero-sec:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.65)}
+.hero-image{position:relative;min-height:86vh;overflow:hidden}
+.hero-image img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.hero-image-grad{position:absolute;inset:0;background:linear-gradient(90deg,#2D5016 0%,transparent 45%)}
+.stat-float{position:absolute;bottom:2.5rem;right:2.5rem;background:rgba(255,255,255,.96);border-radius:var(--radius-lg);padding:1.25rem 1.75rem;box-shadow:var(--shadow-md)}
+.stat-float .sf-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:.75rem}
+.sf-row{display:flex;gap:1.75rem}
+.sf-stat strong{display:block;font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--forest);font-weight:700;line-height:1}
+.sf-stat span{font-size:.75rem;color:var(--muted)}
+
+/* ── GENERAL SECTION ── */
+section{padding:5rem 2rem}
+.si{max-width:1100px;margin:0 auto}
+.label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:.6rem}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--charcoal);margin-bottom:1.25rem}
+.section-intro{font-size:1rem;color:var(--muted);max-width:580px;line-height:1.8}
+
+/* ── CARDS ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+
+/* ── IMPACT ── */
+.impact-section{background:var(--forest-pale)}
+.impact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 1.5rem;text-align:center}
+.impact-card .ic-icon{font-size:2rem;margin-bottom:.9rem}
+.impact-card strong{display:block;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--forest);font-weight:700;line-height:1}
+.impact-card p{font-size:.88rem;color:var(--muted);margin-top:.5rem}
+
+/* ── HOW IT WORKS ── */
+.step-card{padding:2rem;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--cream)}
+.step-num{width:40px;height:40px;background:var(--forest);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:1.25rem}
+.step-card h3{font-size:1.1rem;margin-bottom:.65rem;color:var(--charcoal)}
+.step-card p{font-size:.9rem;color:var(--muted)}
+
+/* ── STORIES ── */
+.story-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.story-photo{height:210px;overflow:hidden;background:var(--forest-light)}
+.story-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.story-card:hover .story-photo img{transform:scale(1.04)}
+.story-body{padding:1.5rem}
+.story-quote{font-family:'Playfair Display',serif;font-size:1rem;color:var(--charcoal);line-height:1.6;margin-bottom:1rem}
+.story-quote::before{content:'\201C';color:var(--forest);font-size:1.3rem}
+.story-name{font-weight:600;font-size:.88rem;color:var(--forest)}
+.story-detail{font-size:.78rem;color:var(--muted)}
+
+/* ── NEWS ── */
+.news-tag{display:inline-block;background:var(--forest-light);color:var(--forest);font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:50px;margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.07em}
+.news-card h3{font-size:1rem;margin-bottom:.5rem;color:var(--charcoal)}
+.news-card p{font-size:.88rem;color:var(--muted)}
+.news-date{font-size:.76rem;color:var(--muted);margin-top:.85rem}
+
+/* ── TEAM ── */
+.team-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;text-align:center;padding-bottom:1.5rem}
+.team-avatar{height:160px;background:var(--forest-light);display:flex;align-items:center;justify-content:center}
+.team-initials{width:70px;height:70px;border-radius:50%;background:var(--forest);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700}
+.team-card h3{font-size:.98rem;margin:1.1rem 1rem .2rem;color:var(--charcoal)}
+.team-role{font-size:.8rem;color:var(--forest);font-weight:500;margin:0 1rem}
+.team-card p{font-size:.8rem;color:var(--muted);margin:.5rem 1rem 0}
+.transition-notice{background:var(--warning-light);border:1px solid #f0c96b;border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:2.5rem;display:flex;gap:1rem;align-items:flex-start}
+.transition-notice .tn-icon{font-size:1.3rem;flex-shrink:0}
+.transition-notice p{font-size:.9rem;color:var(--charcoal);line-height:1.6}
+
+/* ── DONATE BANNER ── */
+.donate-banner{background:var(--gold);padding:4.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.donate-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")}
+.donate-banner h2{font-size:clamp(1.8rem,3vw,2.8rem);color:var(--white);margin-bottom:1rem;position:relative}
+.donate-banner p{color:rgba(255,255,255,.88);max-width:560px;margin:0 auto 2rem;position:relative;font-size:1rem}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--gold);padding:14px 38px;border-radius:50px;font-weight:700;font-size:1rem;position:relative;transition:all .2s;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.2)}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);color:rgba(255,255,255,.65);padding:4rem 2rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{font-size:.88rem;margin:1rem 0;line-height:1.75}
+.footer-col h4{color:var(--white);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.55rem}
+.footer-col ul li a{color:rgba(255,255,255,.55);font-size:.86rem;transition:color .2s}
+.footer-col ul li a:hover{color:var(--white)}
+.footer-donate{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--white);padding:10px 24px;border-radius:50px;font-size:.88rem;font-weight:600;margin-top:.85rem;transition:all .2s}
+.footer-donate:hover{background:var(--gold-hover)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-tax{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:.3rem}
+.admin-toggle{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.35);font-size:.72rem;padding:4px 12px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.admin-toggle:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+
+/* ── FLOATING DONATE ── */
+.float-donate{position:fixed;bottom:1.75rem;right:1.75rem;z-index:500;background:var(--gold);color:var(--white);border-radius:50px;padding:13px 24px;font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:7px;box-shadow:0 6px 28px rgba(196,135,45,.5);animation:pulse-gold 3s ease-in-out infinite;transition:all .2s}
+.float-donate:hover{background:var(--gold-hover);animation:none;transform:translateY(-2px)}
+@keyframes pulse-gold{0%,100%{box-shadow:0 6px 28px rgba(196,135,45,.5)}50%{box-shadow:0 6px 48px rgba(196,135,45,.8)}}
+
+/* ── ABOUT PAGE ── */
+.page-hero{padding:5rem 2rem;text-align:center}
+.page-hero.green{background:linear-gradient(135deg,#1c3a0d 0%,var(--forest) 100%)}
+.page-hero.gold{background:linear-gradient(135deg,var(--gold) 0%,#a3701e 100%)}
+.page-hero h1{color:var(--white);font-size:clamp(2rem,4vw,3rem)}
+.page-hero p{color:rgba(255,255,255,.82);max-width:580px;margin:1.5rem auto 0;font-size:1.05rem}
+.value-item{display:flex;gap:1rem;align-items:flex-start;padding:1.25rem;background:var(--forest-pale);border-radius:var(--radius);border-left:3px solid var(--forest);margin-bottom:.85rem}
+.value-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.value-item h4{font-size:.93rem;color:var(--charcoal);margin-bottom:.2rem}
+.value-item p{font-size:.83rem;color:var(--muted)}
+
+/* ── HOW IT WORKS PAGE ── */
+.faq-item{border-bottom:1px solid var(--border);padding:1.4rem 0}
+.faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:500;font-size:.97rem;color:var(--charcoal);gap:1rem;list-style:none}
+.faq-q::after{content:'+';font-size:1.3rem;color:var(--forest);flex-shrink:0}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{display:none;padding-top:.85rem;font-size:.9rem;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{display:block}
+
+/* ══════════════════════════════════
+   SUPPORT / JOIN / DONATE FLOW
+══════════════════════════════════ */
+.support-flow{background:var(--white);padding:5rem 2rem}
+.flow-inner{max-width:720px;margin:0 auto}
+.flow-steps{display:flex;align-items:center;gap:0;margin-bottom:3rem}
+.flow-step{flex:1;text-align:center;position:relative}
+.flow-step:not(:last-child)::after{content:'';position:absolute;top:16px;left:50%;width:100%;height:2px;background:var(--border);z-index:0}
+.flow-step.done::after{background:var(--forest)}
+.fs-num{width:34px;height:34px;border-radius:50%;background:var(--border);color:var(--muted);font-size:.85rem;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto .4rem;position:relative;z-index:1;transition:all .3s}
+.flow-step.active .fs-num{background:var(--forest);color:var(--white)}
+.flow-step.done .fs-num{background:var(--forest);color:var(--white)}
+.fs-label{font-size:.72rem;color:var(--muted);font-weight:500}
+.flow-step.active .fs-label,.flow-step.done .fs-label{color:var(--forest)}
+
+.flow-panel{display:none;animation:fadeIn .25s ease}
+.flow-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.flow-panel h2{font-size:1.5rem;margin-bottom:.5rem;color:var(--charcoal)}
+.flow-panel .flow-sub{font-size:.92rem;color:var(--muted);margin-bottom:2rem}
+
+/* Member type selector */
+.type-select-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.type-option{border:2px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;cursor:pointer;transition:all .2s;background:var(--cream)}
+.type-option:hover{border-color:var(--forest);background:var(--forest-pale)}
+.type-option.selected{border-color:var(--forest);background:var(--forest-pale)}
+.type-option h3{font-size:.97rem;color:var(--charcoal);margin-bottom:.35rem}
+.type-option p{font-size:.8rem;color:var(--muted)}
+.type-option .to-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:inline-block;margin-bottom:.75rem;transition:all .2s;background:var(--white);position:relative}
+.type-option.selected .to-check{border-color:var(--forest);background:var(--forest)}
+.type-option.selected .to-check::after{content:'';position:absolute;top:4px;left:4px;width:8px;height:8px;border-radius:50%;background:var(--white)}
+
+/* Membership cards */
+.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.mem-card{border:2px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;cursor:pointer;transition:all .2s;background:var(--cream);position:relative}
+.mem-card:hover{border-color:var(--forest)}
+.mem-card.selected{border-color:var(--forest);background:var(--forest-pale)}
+.mem-card.featured{border-color:var(--gold)}
+.mem-badge{position:absolute;top:-1px;right:16px;background:var(--gold);color:var(--white);font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:0 0 8px 8px;text-transform:uppercase;letter-spacing:.05em}
+.mem-card h3{font-size:1rem;color:var(--charcoal);margin-bottom:.25rem}
+.mem-price{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--forest);font-weight:700;margin:.5rem 0}
+.mem-price span{font-size:.8rem;font-family:'DM Sans',sans-serif;color:var(--muted);font-weight:400}
+.mem-card ul{list-style:none;margin-top:.75rem}
+.mem-card ul li{font-size:.8rem;color:var(--muted);padding:.2rem 0;display:flex;gap:.5rem}
+.mem-card ul li::before{content:'✓';color:var(--forest);font-weight:700;flex-shrink:0}
+
+/* Forms */
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:.92rem;color:var(--text);background:var(--cream);transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--forest)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* Zeffy redirect box */
+.zeffy-box{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:var(--radius-lg);padding:2rem;text-align:center;margin-bottom:1.5rem}
+.zeffy-box h3{font-size:1.2rem;color:var(--charcoal);margin-bottom:.65rem}
+.zeffy-box p{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
+.quick-amounts{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.25rem}
+.qa-btn{background:var(--white);border:1.5px solid var(--border);padding:8px 18px;border-radius:50px;font-size:.9rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s}
+.qa-btn:hover,.qa-btn.active{background:var(--forest);border-color:var(--forest);color:var(--white)}
+.custom-amount{display:flex;gap:.75rem;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.custom-amount input{width:130px;padding:9px 14px;border:1.5px solid var(--border);border-radius:50px;text-align:center;font-size:.95rem;font-family:'DM Sans',sans-serif}
+.btn-zeffy{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--white);padding:13px 32px;border-radius:50px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all .2s}
+.btn-zeffy:hover{background:var(--gold-hover);transform:translateY(-1px)}
+
+/* Sweat equity form */
+.se-box{background:var(--forest-pale);border:1.5px solid var(--forest-light);border-radius:var(--radius-lg);padding:1.75rem;margin-bottom:1.5rem}
+.se-box h3{font-size:1.1rem;color:var(--charcoal);margin-bottom:1rem}
+
+/* Nav buttons */
+.flow-nav{display:flex;justify-content:space-between;margin-top:2rem}
+.btn-back{background:none;border:1.5px solid var(--border);padding:10px 22px;border-radius:50px;font-size:.9rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s}
+.btn-back:hover{border-color:var(--text);color:var(--text)}
+.btn-next{background:var(--forest);color:var(--white);border:none;padding:11px 28px;border-radius:50px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-next:hover{background:var(--forest-mid)}
+.btn-next:disabled{background:var(--border);cursor:not-allowed}
+
+/* Confirmation */
+.confirm-box{text-align:center;padding:2rem 0}
+.confirm-icon{font-size:3.5rem;margin-bottom:1rem}
+.confirm-box h2{font-size:1.6rem;color:var(--forest);margin-bottom:.75rem}
+.confirm-box p{font-size:.95rem;color:var(--muted);max-width:480px;margin:0 auto 1.5rem}
+
+/* ══════════════════════════════════
+   MEMBER DASHBOARD
+══════════════════════════════════ */
+.dashboard{background:var(--cream);min-height:calc(100vh - 66px);padding:2.5rem 2rem}
+.dash-inner{max-width:1100px;margin:0 auto}
+.dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+.dash-greeting h1{font-size:1.8rem;color:var(--charcoal)}
+.dash-greeting p{font-size:.9rem;color:var(--muted);margin-top:.25rem}
+.dash-actions{display:flex;gap:.75rem}
+.btn-sm{padding:8px 18px;border-radius:50px;font-size:.83rem;font-weight:600;border:none;cursor:pointer;transition:all .2s}
+.btn-sm-donate{background:var(--gold);color:var(--white)}
+.btn-sm-donate:hover{background:var(--gold-hover)}
+.btn-sm-outline{background:none;border:1.5px solid var(--border);color:var(--text)}
+.btn-sm-outline:hover{border-color:var(--forest);color:var(--forest)}
+
+.dash-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem}
+.dash-metric{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.4rem;position:relative;overflow:hidden}
+.dash-metric::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--forest)}
+.dash-metric .dm-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:.4rem}
+.dash-metric .dm-value{font-family:'Playfair Display',serif;font-size:2rem;color:var(--charcoal);font-weight:700;line-height:1;margin-bottom:.25rem}
+.dash-metric .dm-sub{font-size:.8rem;color:var(--muted)}
+.dash-metric .dm-action{margin-top:.85rem}
+.dm-link{font-size:.8rem;font-weight:600;color:var(--forest);display:inline-flex;align-items:center;gap:4px;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+.dm-link:hover{text-decoration:underline}
+
+.dash-main{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+.dash-panel{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem}
+.dash-panel h3{font-size:1.05rem;color:var(--charcoal);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between}
+.dash-panel h3 button{font-size:.78rem;background:var(--forest-light);color:var(--forest);border:none;padding:4px 12px;border-radius:50px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.dash-panel h3 button:hover{background:var(--forest);color:var(--white)}
+
+/* Volunteer log */
+.vol-item{display:flex;align-items:flex-start;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.vol-item:last-child{border-bottom:none}
+.vol-info h4{font-size:.88rem;color:var(--charcoal);font-weight:500}
+.vol-info p{font-size:.76rem;color:var(--muted)}
+.vol-badge{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:50px}
+.vol-badge.pending{background:var(--warning-light);color:var(--warning)}
+.vol-badge.approved{background:var(--success-light);color:var(--success)}
+.log-vol-form{background:var(--forest-pale);border-radius:var(--radius);padding:1.25rem;margin-top:1rem;display:none}
+.log-vol-form.open{display:block}
+
+/* Impact map */
+.map-container{background:var(--forest-pale);border-radius:var(--radius);overflow:hidden;position:relative;height:320px}
+.map-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--muted)}
+.map-placeholder svg{width:48px;height:48px;opacity:.4}
+.map-placeholder p{font-size:.9rem;font-weight:500}
+.map-placeholder small{font-size:.8rem;opacity:.7;text-align:center;max-width:240px}
+.map-filters{display:flex;gap:.5rem;margin-bottom:.85rem;flex-wrap:wrap}
+.map-filter{background:var(--white);border:1px solid var(--border);padding:5px 14px;border-radius:50px;font-size:.78rem;font-weight:500;cursor:pointer;transition:all .15s}
+.map-filter.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
+
+/* Membership status */
+.mem-status-card{background:var(--forest-pale);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem}
+.mem-status-card .ms-row{display:flex;align-items:center;justify-content:space-between}
+.mem-type-badge{background:var(--forest);color:var(--white);font-size:.78rem;font-weight:600;padding:4px 14px;border-radius:50px}
+.ms-detail{margin-top:.85rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+.ms-detail-item .ms-key{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+.ms-detail-item .ms-val{font-size:.9rem;color:var(--charcoal);font-weight:500}
+.mem-actions{display:flex;gap:.65rem;margin-top:1rem}
+.btn-mem-action{flex:1;padding:9px;border-radius:50px;font-size:.8rem;font-weight:600;text-align:center;cursor:pointer;font-family:'DM Sans',sans-serif;border:1.5px solid var(--border);background:var(--white);color:var(--text);transition:all .2s}
+.btn-mem-action:hover{border-color:var(--forest);color:var(--forest)}
+.btn-mem-action.danger:hover{border-color:var(--danger);color:var(--danger)}
+
+/* Voting */
+.vote-item{background:var(--forest-pale);border-radius:var(--radius);padding:1.25rem;margin-bottom:.75rem}
+.vote-item h4{font-size:.92rem;color:var(--charcoal);margin-bottom:.4rem;font-family:'Playfair Display',serif}
+.vote-item p{font-size:.82rem;color:var(--muted);margin-bottom:.85rem}
+.vote-options{display:flex;gap:.5rem}
+.vote-btn{flex:1;padding:8px;border-radius:var(--radius);font-size:.82rem;font-weight:600;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.vote-btn:hover{border-color:var(--forest);color:var(--forest)}
+.vote-btn.voted-yes{background:var(--success-light);border-color:var(--success);color:var(--success)}
+.vote-btn.voted-no{background:var(--danger-light);border-color:var(--danger);color:var(--danger)}
+.vote-btn.voted-abs{background:var(--info-light);border-color:var(--info);color:var(--info)}
+.votes-only-notice{background:var(--info-light);border:1px solid #b8d4f0;border-radius:var(--radius);padding:1rem;font-size:.85rem;color:var(--info)}
+
+/* Expenses */
+.expense-item{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.expense-item:last-child{border-bottom:none}
+.exp-info h4{font-size:.87rem;color:var(--charcoal);font-weight:500}
+.exp-info p{font-size:.75rem;color:var(--muted)}
+.exp-amount{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);font-weight:600}
+.exp-status{font-size:.72rem;font-weight:600;padding:2px 10px;border-radius:50px}
+.exp-status.draft{background:var(--border);color:var(--muted)}
+.exp-status.submitted{background:var(--info-light);color:var(--info)}
+.exp-status.approved{background:var(--success-light);color:var(--success)}
+
+/* Events */
+.event-item{display:flex;gap:1rem;align-items:flex-start;padding:.9rem 0;border-bottom:1px solid var(--border)}
+.event-item:last-child{border-bottom:none}
+.event-date{background:var(--forest);color:var(--white);border-radius:var(--radius);padding:.5rem .75rem;text-align:center;min-width:52px;flex-shrink:0}
+.event-date .ed-mo{font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.event-date .ed-day{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;line-height:1}
+.event-info h4{font-size:.9rem;color:var(--charcoal);font-weight:500;margin-bottom:.2rem}
+.event-info p{font-size:.78rem;color:var(--muted)}
+.event-info .ev-reg{font-size:.78rem;font-weight:600;color:var(--forest);display:inline-block;margin-top:.35rem;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif}
+.ev-reg:hover{text-decoration:underline}
+.ev-registered{font-size:.72rem;background:var(--success-light);color:var(--success);font-weight:600;padding:2px 10px;border-radius:50px;display:inline-block;margin-top:.35rem}
+
+/* Documents */
+.doc-item{display:flex;align-items:center;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.doc-item:last-child{border-bottom:none}
+.doc-icon{width:36px;height:36px;background:var(--forest-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.doc-info h4{font-size:.88rem;color:var(--charcoal);font-weight:500}
+.doc-info p{font-size:.75rem;color:var(--muted)}
+.doc-download{background:none;border:1.5px solid var(--border);padding:5px 14px;border-radius:50px;font-size:.75rem;font-weight:600;color:var(--text);cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;flex-shrink:0}
+.doc-download:hover{border-color:var(--forest);color:var(--forest)}
+
+/* Profile edit */
+.profile-display{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.pd-item .pd-key{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;margin-bottom:.2rem}
+.pd-item .pd-val{font-size:.92rem;color:var(--charcoal)}
+
+/* ── ADMIN CMS BAR & OVERLAY ── */
+.cms-admin-bar{background:#111110;color:rgba(255,255,255,.65);padding:7px 2rem;display:flex;align-items:center;justify-content:space-between;font-size:.76rem;display:none}
+.cms-admin-bar.show{display:flex}
+.cms-edit-btn{background:var(--gold);color:var(--white);border:none;padding:5px 16px;border-radius:50px;font-size:.75rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.cms-edit-btn:hover{background:var(--gold-hover)}
+.cms-transition-tag{font-size:.73rem;color:rgba(255,255,255,.4);font-style:italic}
+
+#cms-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);overflow-y:auto;padding:2rem}
+#cms-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.cms-panel{background:var(--white);border-radius:var(--radius-xl);width:100%;max-width:880px;box-shadow:0 20px 80px rgba(0,0,0,.3);overflow:hidden;margin:auto}
+.cms-hdr{background:var(--forest);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.cms-hdr h2{color:var(--white);font-size:1.25rem}
+.cms-x{background:rgba(255,255,255,.15);border:none;color:var(--white);width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cms-x:hover{background:rgba(255,255,255,.3)}
+.cms-tabs-row{display:flex;background:var(--cream);border-bottom:1px solid var(--border);overflow-x:auto}
+.cms-t{padding:.85rem 1.4rem;font-size:.85rem;font-weight:500;cursor:pointer;border:none;background:none;color:var(--muted);font-family:'DM Sans',sans-serif;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s}
+.cms-t.active{color:var(--forest);border-bottom-color:var(--forest);background:var(--white)}
+.cms-body{padding:2rem;max-height:68vh;overflow-y:auto}
+.cms-sec{display:none}.cms-sec.active{display:block}
+.cms-field{margin-bottom:1.1rem}
+.cms-field label{display:block;font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+.cms-field input,.cms-field textarea,.cms-field select{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+.cms-field input:focus,.cms-field textarea:focus{border-color:var(--forest)}
+.cms-field textarea{min-height:80px;resize:vertical}
+.cms-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cms-item-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.85rem}
+.cms-item-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem}
+.cms-item-hdr h4{font-size:.9rem;color:var(--charcoal)}
+.cms-del{background:none;border:1px solid #fbbcbc;color:var(--danger);padding:3px 10px;border-radius:6px;font-size:.75rem;cursor:pointer;font-family:'DM Sans',sans-serif}
+.cms-del:hover{background:var(--danger-light)}
+.cms-add-btn{display:inline-flex;align-items:center;gap:6px;background:var(--forest-light);color:var(--forest);border:1.5px solid var(--forest);padding:7px 16px;border-radius:var(--radius);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:700;transition:all .15s;margin-bottom:1.1rem}
+.cms-add-btn:hover{background:var(--forest);color:var(--white)}
+.cms-footer{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-top:1px solid var(--border);background:var(--cream)}
+.cms-save-btn{background:var(--forest);color:var(--white);border:none;padding:10px 26px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s}
+.cms-save-btn:hover{background:var(--forest-mid)}
+.cms-note{font-size:.78rem;color:var(--muted)}
+
+.cms-toast{position:fixed;bottom:2rem;right:2rem;z-index:99999;background:var(--forest);color:var(--white);padding:1rem 1.5rem;border-radius:var(--radius);font-size:.9rem;font-weight:500;box-shadow:var(--shadow-md);transform:translateY(100px);opacity:0;transition:all .3s}
+.cms-toast.show{transform:translateY(0);opacity:1}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}.hero-image{display:none}.hero-text{padding:4rem 2rem}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr 1fr}
+  .dash-main{grid-template-columns:1fr}
+  .membership-grid,.type-select-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .profile-display{grid-template-columns:1fr}
+}
+
+/* ── CMS LOGIN MODAL ── */
+#cms-login-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center}
+#cms-login-overlay.open{display:flex}
+.cms-login-box{background:var(--white);border-radius:var(--radius-xl);width:100%;max-width:400px;padding:2.5rem;box-shadow:0 24px 80px rgba(0,0,0,.35);position:relative}
+.cms-login-box h2{font-size:1.4rem;color:var(--charcoal);margin-bottom:.4rem}
+.cms-login-box p{font-size:.88rem;color:var(--muted);margin-bottom:1.75rem}
+.cms-login-field{margin-bottom:1.1rem}
+.cms-login-field label{display:block;font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+.cms-login-field input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+.cms-login-field input:focus{border-color:var(--forest)}
+.cms-login-field input.error{border-color:var(--danger);background:var(--danger-light)}
+.cms-login-error{font-size:.82rem;color:var(--danger);margin-top:.35rem;display:none}
+.cms-login-error.show{display:block}
+.cms-login-btn{width:100%;background:var(--forest);color:var(--white);border:none;padding:12px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;margin-top:.5rem}
+.cms-login-btn:hover{background:var(--forest-mid)}
+.cms-login-btn:disabled{background:var(--border);cursor:not-allowed}
+.cms-login-logo{display:flex;align-items:center;gap:10px;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+.cms-login-logo img{height:38px;width:auto}
+.cms-login-logo span{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--charcoal)}
+.cms-session-info{font-size:.72rem;color:rgba(255,255,255,.45);font-style:italic}
+.cms-logout-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:.75rem;padding:4px 12px;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-left:.75rem}
+.cms-logout-btn:hover{background:rgba(255,255,255,.2);color:var(--white)}
+</style>
+</head>
+<body>
+
+<!-- ADMIN BAR -->
+<div class="cms-admin-bar" id="cmsBar">
+  <span>🔒 Admin Mode — Ashe CLT Content Manager</span>
+  <span id="cms-session-display" class="cms-session-info">Session active</span>
+  <div style="display:flex;align-items:center;gap:.5rem">
+    <button class="cms-edit-btn" onclick="openCMS()">✏ Edit Website Content</button>
+    <button class="cms-logout-btn" onclick="cmsLogout()">Sign Out</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#" onclick="nav('home')">
+    <img src="https://kbvafhwsftrocnfxtfbg.supabase.co/storage/v1/object/public/publicimages/Secondary%20Logo.png" alt="Ashe Community Land Trust">
+  </a>
+  <div class="nav-links">
+    <a href="#" id="nl-home" onclick="nav('home')" class="active">Home</a>
+    <a href="#" id="nl-about" onclick="nav('about')">Our Story</a>
+    <a href="#" id="nl-how" onclick="nav('how')">How It Works</a>
+    <a href="#" id="nl-support" onclick="nav('support')">Donate or Join</a>
+    <a href="#" id="nl-dash" onclick="nav('dashboard')" style="display:none">My Account</a>
+  </div>
+  <div class="nav-ctas">
+    <button class="btn-signin" id="signinBtn" onclick="simulateLogin()">Sign In</button>
+    <button class="btn-donate-nav" onclick="nav('support')">❤ Donate</button>
+  </div>
+</nav>
+
+<!-- ═══════════ HOME ═══════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span> Serving Ashe County, North Carolina</div>
+      <h1 id="hero-hl">A Home in the Mountains — <em>Yours to Keep.</em></h1>
+      <p class="hero-sub" id="hero-sub">Ashe CLT helps working families own safe, affordable homes — permanently. No displacement. Just community taking care of its own.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-hero-primary" onclick="nav('support')">❤ Donate or Join</a>
+        <a href="#" class="btn-hero-sec" onclick="nav('how')">How It Works →</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?w=900&q=80" alt="Family in Blue Ridge Mountains">
+      <div class="hero-image-grad"></div>
+      <div class="stat-float">
+        <div class="sf-label">Our impact, by the numbers</div>
+        <div class="sf-row">
+          <div class="sf-stat"><strong id="s-homes">12+</strong><span>Families housed</span></div>
+          <div class="sf-stat"><strong id="s-savings">$180K</strong><span>Avg. family savings</span></div>
+          <div class="sf-stat"><strong>Forever</strong><span>Affordability</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT STATS -->
+  <section class="impact-section">
+    <div class="si">
+      <p class="label">Why It Matters</p>
+      <h2 class="section-title">Housing in Ashe County is a crisis</h2>
+      <p class="section-intro">Rising prices are pushing out the teachers, nurses, and farmers who built this community. We're here to make sure they can stay.</p>
+      <div class="grid-4" style="margin-top:2.5rem">
+        <div class="impact-card"><div class="ic-icon">🏡</div><strong id="st1">47%</strong><p>of Ashe County renters are cost-burdened, paying over 30% of income on housing</p></div>
+        <div class="impact-card"><div class="ic-icon">📈</div><strong id="st2">68%</strong><p>rise in median home prices in the region over five years</p></div>
+        <div class="impact-card"><div class="ic-icon">✅</div><strong id="st3">99%</strong><p>of CLT homeowners nationally avoid foreclosure — proof the model works</p></div>
+        <div class="impact-card"><div class="ic-icon">♾️</div><strong>Permanent</strong><p>Once a CLT home, always affordable — for this family and every one after</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS TEASER -->
+  <section style="background:var(--white)">
+    <div class="si">
+      <p class="label">The CLT Model</p>
+      <h2 class="section-title">Simple idea. Lasting change.</h2>
+      <p class="section-intro">We own the land. Families own the home. Together, we keep it affordable forever.</p>
+      <div class="grid-3" style="margin-top:2.5rem">
+        <div class="step-card"><div class="step-num">1</div><h3>We hold the land in trust</h3><p>Ashe CLT acquires land and keeps it permanently off the speculative market — for the community, forever.</p></div>
+        <div class="step-card"><div class="step-num">2</div><h3>Families buy the home below market</h3><p>Without the land cost, homes are 20–40% more affordable — making ownership possible on a working family's income.</p></div>
+        <div class="step-card"><div class="step-num">3</div><h3>Affordability stays with the home</h3><p>A resale formula ensures the next family also gets an affordable price — building wealth without displacing neighbors.</p></div>
+      </div>
+      <div style="margin-top:2rem"><a href="#" onclick="nav('how')" style="color:var(--forest);font-weight:600;font-size:.97rem">Full explanation + FAQ →</a></div>
+    </div>
+  </section>
+
+  <!-- RESIDENT STORIES -->
+  <section style="background:var(--forest-pale)">
+    <div class="si">
+      <p class="label">Real People. Real Homes.</p>
+      <h2 class="section-title">Hear from our community</h2>
+      <p class="section-intro">These aren't just houses — they're stability, dignity, and a future for Ashe County families.</p>
+      <div class="grid-3" style="margin-top:2.5rem" id="stories-container"></div>
+    </div>
+  </section>
+
+  <!-- DONATE BANNER -->
+  <div class="donate-banner">
+    <h2 id="db-hl">Your donation builds a home that lasts forever.</h2>
+    <p id="db-sub">Every gift helps us acquire land, renovate homes, and support families. 100% tax-deductible.</p>
+    <a href="#" class="btn-white" onclick="nav('support')">❤ Donate or Join Today</a>
+  </div>
+
+  <!-- NEWS -->
+  <section style="background:var(--white)">
+    <div class="si">
+      <p class="label">Latest Updates</p>
+      <h2 class="section-title">What's happening at Ashe CLT</h2>
+      <div class="grid-3" style="margin-top:2.5rem" id="news-container"></div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section style="background:var(--forest-pale)">
+    <div class="si">
+      <p class="label">Our People</p>
+      <h2 class="section-title">Steady leadership. Rooted in community.</h2>
+      <div class="transition-notice">
+        <div class="tn-icon">🔄</div>
+        <p id="team-msg">During our current leadership transition, our board and staff remain fully committed to our mission. Our programs and services continue without interruption.</p>
+      </div>
+      <div class="grid-4" id="team-container"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero green">
+    <h1>Our Story & Mission</h1>
+    <p id="about-hero-p">Born from community need. Sustained by community trust. Ashe CLT exists because housing affordability in the High Country isn't just an economic problem — it's a human one.</p>
+  </div>
+  <section style="background:var(--white)">
+    <div class="si" style="max-width:900px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+        <div>
+          <h2 id="about-mission-title" style="margin-bottom:1.25rem">Why Ashe CLT Exists</h2>
+          <p id="about-body" style="color:var(--muted);margin-bottom:1rem;line-height:1.8">Rising home prices are pushing out the people who define Ashe County — the teachers, farmers, healthcare workers, and longtime families whose roots run deep in these mountains. Ashe CLT was formed to make sure those people have a place to stay.</p>
+          <p style="color:var(--muted);line-height:1.8">Using the nationally proven community land trust model, we acquire land and hold it permanently for the community — so homes on that land can be sold affordably, now and forever.</p>
+        </div>
+        <div>
+          <div class="value-item"><div class="value-icon">🌱</div><div><h4>Rooted in Place</h4><p>We prioritize residents with ties to Ashe County who need a path to stay.</p></div></div>
+          <div class="value-item"><div class="value-icon">🤝</div><div><h4>Community Governed</h4><p>Our board includes CLT homeowners, community members, and local experts — accountable to those we serve.</p></div></div>
+          <div class="value-item"><div class="value-icon">♾️</div><div><h4>Permanently Affordable</h4><p>Once in the trust, a home is affordable forever — for this buyer and every buyer after them.</p></div></div>
+          <div class="value-item"><div class="value-icon">📊</div><div><h4>Transparent & Accountable</h4><p>We publish our financials and operate with full transparency to donors, residents, and partners.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="donate-banner"><h2>Believe in our mission?</h2><p>Your donation goes directly toward acquiring land and building permanently affordable homes.</p><a href="#" class="btn-white" onclick="nav('support')">❤ Donate or Join</a></div>
+</div>
+
+<!-- ═══════════ HOW IT WORKS ═══════════ -->
+<div class="page" id="page-how">
+  <div class="page-hero green"><h1>How a Community Land Trust Works</h1><p>A simple, powerful idea: keep land in community hands so homes stay affordable forever.</p></div>
+  <section style="background:var(--white)">
+    <div class="si">
+      <div class="grid-3" style="margin-top:0">
+        <div class="step-card"><div class="step-num">1</div><h3>Land is held in trust</h3><p>Ashe CLT acquires land through donations, purchases, or government transfer and holds it permanently in community trust. It is never sold.</p></div>
+        <div class="step-card"><div class="step-num">2</div><h3>Homes sold below market</h3><p>Because the land is removed from the price, homes can be sold 20–40% below market rate to income-qualified families with a real mortgage.</p></div>
+        <div class="step-card"><div class="step-num">3</div><h3>99-year ground lease</h3><p>The homeowner signs a renewable 99-year ground lease with Ashe CLT. They own the home. We own the land. The lease guarantees future affordability.</p></div>
+        <div class="step-card"><div class="step-num">4</div><h3>Equity shared fairly</h3><p>A resale formula lets families earn a fair return when they sell, while keeping the home affordable for the next buyer. Wealth without displacement.</p></div>
+        <div class="step-card"><div class="step-num">5</div><h3>Ongoing stewardship</h3><p>Ashe CLT provides mortgage counseling, maintenance guidance, and community support so families succeed long-term.</p></div>
+        <div class="step-card"><div class="step-num">6</div><h3>Community stays whole</h3><p>Each home added to the trust is permanently off the speculative market — building neighborhood stability for everyone.</p></div>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--forest-pale)">
+    <div class="si" style="max-width:760px">
+      <p class="label">FAQ</p>
+      <h2 class="section-title" style="margin-bottom:2rem">Your questions, answered</h2>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Do I really own my home in a CLT?</div><div class="faq-a">Yes — you own the home with a standard mortgage. Ashe CLT owns the land and leases it to you via a 99-year renewable ground lease. You can renovate, paint, and make it your own just like any homeowner.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">How much does a CLT home cost?</div><div class="faq-a">CLT homes are typically priced 20–40% below market because you're buying the home, not the land. Exact pricing depends on available units and income. Contact us to learn about current opportunities.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I pass my home to my children?</div><div class="faq-a">Yes. CLT homes are inheritable. Your heirs can continue living in the home or sell it — with the affordability restriction preserved for the next family.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What if I fall behind on my mortgage?</div><div class="faq-a">Lenders cannot foreclose without first notifying Ashe CLT. We have the right to step in and help cure the default. CLT homeowners nationwide have a foreclosure rate under 1%.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Who qualifies to buy a CLT home?</div><div class="faq-a">Buyers generally earn 50–80% of Area Median Income, have stable income, and qualify for a mortgage. Preference is given to current Ashe County residents. Contact us for current openings.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">How can I support Ashe CLT if I'm not buying a home?</div><div class="faq-a">Donate, join as a member, donate land, volunteer, or simply spread the word. Every form of support makes a lasting difference.</div></div>
+    </div>
+  </section>
+  <div class="donate-banner"><h2>Ready to make a home possible?</h2><p>Your donation creates permanently affordable homeownership in Ashe County.</p><a href="#" class="btn-white" onclick="nav('support')">❤ Donate or Join</a></div>
+</div>
+
+<!-- ═══════════ SUPPORT / JOIN / DONATE FLOW (/support) ═══════════ -->
+<div class="page" id="page-support">
+  <div class="page-hero gold"><h1>Give to Ashe CLT or Become a Member</h1><p>Whether you want to make a donation or join our community land trust, we'll walk you through it — one simple step at a time.</p></div>
+  <div class="support-flow">
+    <div class="flow-inner">
+
+      <!-- Progress indicator -->
+      <div class="flow-steps" id="flow-steps">
+        <div class="flow-step active" id="fstep-1"><div class="fs-num">1</div><div class="fs-label">About you</div></div>
+        <div class="flow-step" id="fstep-2"><div class="fs-num">2</div><div class="fs-label">Your address</div></div>
+        <div class="flow-step" id="fstep-3"><div class="fs-num">3</div><div class="fs-label">Pick an option</div></div>
+        <div class="flow-step" id="fstep-4"><div class="fs-num">4</div><div class="fs-label">Set up account</div></div>
+        <div class="flow-step" id="fstep-5"><div class="fs-num">5</div><div class="fs-label">Pay securely</div></div>
+        <div class="flow-step" id="fstep-6"><div class="fs-num">6</div><div class="fs-label">All done!</div></div>
+      </div>
+
+      <!-- STEP 1: Individual or Org -->
+      <div class="flow-panel active" id="fp-1">
+        <h2>First, tell us a little about yourself</h2>
+        <p class="flow-sub">Are you giving or joining as a person, or on behalf of a business or organization?</p>
+        <div class="type-select-grid">
+          <div class="type-option" onclick="selectType('individual',this)">
+            <div class="to-check"></div>
+            <h3>🧑 I'm an individual</h3>
+            <p>Just me — joining or donating on my own.</p>
+          </div>
+          <div class="type-option" onclick="selectType('organization',this)">
+            <div class="to-check"></div>
+            <h3>🏢 A business or organization</h3>
+            <p>I'm giving or joining on behalf of a company, nonprofit, or group.</p>
+          </div>
+        </div>
+        <div class="flow-nav"><div></div><button class="btn-next" onclick="goStep(2)" id="btn-s1-next" disabled>Next →</button></div>
+      </div>
+
+      <!-- STEP 2: Address -->
+      <div class="flow-panel" id="fp-2">
+        <h2>Where do you live?</h2>
+        <p class="flow-sub">We use your address to figure out which options are available to you. We will never share or sell your information.</p>
+        <div id="org-name-field" style="display:none">
+          <div class="form-group"><label>Organization Name</label><input type="text" id="org-name" placeholder="Ashe County Business, LLC"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" id="addr-fn" placeholder="Jane"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="addr-ln" placeholder="Smith"></div>
+        </div>
+        <div class="form-group"><label>Street Address</label><input type="text" id="addr-street" placeholder="123 Blue Ridge Way"></div>
+        <div class="form-row">
+          <div class="form-group"><label>City</label><input type="text" id="addr-city" placeholder="Jefferson"></div>
+          <div class="form-group"><label>State</label><input type="text" id="addr-state" placeholder="NC" maxlength="2"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>ZIP Code</label><input type="text" id="addr-zip" placeholder="28640" maxlength="5" oninput="checkCountyStatus()"></div>
+          <div class="form-group"><label>County</label><input type="text" id="addr-county" placeholder="Ashe" oninput="checkCountyStatus()"></div>
+        </div>
+        <div id="county-note" style="display:none;margin-bottom:1rem"></div>
+        <div class="flow-nav"><button class="btn-back" onclick="goStep(1)">← Back</button><button class="btn-next" onclick="goStep(3)">Next →</button></div>
+      </div>
+
+      <!-- STEP 3: Membership / giving options -->
+      <div class="flow-panel" id="fp-3">
+        <h2>How would you like to help?</h2>
+        <p class="flow-sub" id="fp3-sub">Pick the option that feels right for you. You can always change it later.</p>
+        <div class="membership-grid" id="mem-options-grid"></div>
+        <div class="flow-nav"><button class="btn-back" onclick="goStep(2)">← Back</button><button class="btn-next" onclick="goStep(4)" id="btn-s3-next" disabled>Next →</button></div>
+      </div>
+
+      <!-- STEP 4: Account / Sweat Equity -->
+      <div class="flow-panel" id="fp-4">
+        <h2 id="fp4-title">Set up your account</h2>
+        <p class="flow-sub" id="fp4-sub">Creating an account lets you log in anytime to see your membership, track your volunteer hours, vote on community decisions, and more.</p>
+
+        <!-- Sweat Equity commitment (shown only if SE selected) -->
+        <div class="se-box" id="se-box" style="display:none">
+          <h3>Volunteer Commitment Form</h3>
+          <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">As a Sweat Equity Member, you contribute your time and skills instead of paying annual dues. Please let us know how you plan to help.</p>
+          <div class="form-group"><label>How many hours can you commit per year?</label><select><option>25 hours</option><option>50 hours</option><option>75 hours</option></select></div>
+          <div class="form-group"><label>What kinds of things would you like to help with? (check all that apply)</label><div style="display:flex;flex-direction:column;gap:.35rem;margin-top:.35rem"><label style="font-weight:400;font-size:.9rem;display:flex;gap:.5rem"><input type="checkbox" style="width:auto"> Hands-on home repairs and construction</label><label style="font-weight:400;font-size:.9rem;display:flex;gap:.5rem"><input type="checkbox" style="width:auto"> Office and paperwork help</label><label style="font-weight:400;font-size:.9rem;display:flex;gap:.5rem"><input type="checkbox" style="width:auto"> Talking to neighbors and attending events</label><label style="font-weight:400;font-size:.9rem;display:flex;gap:.5rem"><input type="checkbox" style="width:auto"> Serving on a committee</label></div></div>
+          <div class="form-group"><label>Please check the box below to confirm your commitment</label><div style="display:flex;gap:.5rem;align-items:center;margin-top:.4rem"><input type="checkbox" id="se-agree" style="width:auto"> <span style="font-size:.88rem;color:var(--muted)">I agree to contribute my volunteer hours and understand that if I'm unable to fulfill them, my membership type may change.</span></div></div>
+        </div>
+
+        <!-- Account creation (shown for any membership, hidden for one-time gift) -->
+        <div id="account-form">
+          <div class="form-row">
+            <div class="form-group"><label>Your Email Address</label><input type="email" id="acc-email" placeholder="jane@email.com"></div>
+            <div class="form-group"><label>Phone Number (optional)</label><input type="tel" id="acc-phone" placeholder="(336) 000-0000"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Create a Password</label><input type="password" id="acc-pw" placeholder="At least 8 characters"></div>
+            <div class="form-group"><label>Type Your Password Again</label><input type="password" id="acc-pw2" placeholder="Same password as above"></div>
+          </div>
+        </div>
+
+        <!-- One-time gift: no account needed -->
+        <div id="no-account-msg" style="display:none;background:var(--info-light);border-radius:var(--radius);padding:1.25rem;font-size:.9rem;color:var(--info);margin-bottom:1rem;line-height:1.6">
+          👍 Good news — you don't need to create an account to make a one-time gift. Just click Next and we'll take you to our secure payment page.
+        </div>
+
+        <div class="flow-nav"><button class="btn-back" onclick="goStep(3)">← Back</button><button class="btn-next" onclick="goStep(5)">Next →</button></div>
+      </div>
+
+      <!-- STEP 5: Payment (Zeffy) -->
+      <div class="flow-panel" id="fp-5">
+        <h2>Almost there — let's complete your payment</h2>
+        <p class="flow-sub">You'll be taken to our secure payment partner, Zeffy, to finish up. It only takes a minute.</p>
+
+        <div class="zeffy-box">
+          <h3 id="zeffy-title">Choose a donation amount</h3>
+          <p id="zeffy-desc">Pick one of the amounts below, or type in your own. Then click the button to pay securely.</p>
+
+          <!-- Quick amounts (for one-time gift) -->
+          <div class="quick-amounts" id="quick-amounts">
+            <button class="qa-btn" onclick="selectQA(this,'25')">$25</button>
+            <button class="qa-btn active" onclick="selectQA(this,'50')">$50</button>
+            <button class="qa-btn" onclick="selectQA(this,'100')">$100</button>
+            <button class="qa-btn" onclick="selectQA(this,'250')">$250</button>
+          </div>
+          <div class="custom-amount" id="custom-amount-row">
+            <span style="font-size:1.1rem;font-weight:500;color:var(--muted)">$</span>
+            <input type="number" id="custom-amt" placeholder="Other amount" min="1">
+          </div>
+
+          <button class="btn-zeffy" onclick="goStep(6)">Proceed to Zeffy →</button>
+          <p style="font-size:.75rem;color:var(--muted);margin-top:1rem">🔒 Your payment is processed securely by Zeffy. You will leave this page to complete it, and we'll email you a receipt right away.</p>
+        </div>
+
+        <div class="flow-nav"><button class="btn-back" onclick="goStep(4)">← Back</button><div></div></div>
+      </div>
+
+      <!-- STEP 6: Confirmation -->
+      <div class="flow-panel" id="fp-6">
+        <div class="confirm-box">
+          <div class="confirm-icon" id="confirm-icon">🎉</div>
+          <h2 id="confirm-title">You're all set — thank you!</h2>
+          <p id="confirm-body">Your payment went through. Check your email inbox for a receipt. If you created an account, you'll also get a quick email to confirm your address — just click the link in it to activate your account.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem">
+            <button class="btn-next" onclick="simulateLogin();nav('dashboard')">Go to My Account →</button>
+            <button class="btn-back" onclick="nav('home')">Return to Home Page</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MEMBER DASHBOARD (/dashboard) ═══════════ -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard">
+    <div class="dash-inner">
+
+      <div class="dash-header">
+        <div class="dash-greeting">
+          <h1>Welcome back, <span id="dash-name">Jane</span> 👋</h1>
+          <p>Member since March 2024 · You can vote on community decisions</p>
+        </div>
+        <div class="dash-actions">
+          <button class="btn-sm btn-sm-donate" onclick="nav('support')">❤ Make a Donation</button>
+          <button class="btn-sm btn-sm-outline">Download My Tax Receipt</button>
+        </div>
+      </div>
+
+      <!-- METRIC CARDS — My Impact This Year -->
+      <h3 style="font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin-bottom:1rem">My Contributions This Year</h3>
+      <div class="dash-grid">
+        <div class="dash-metric">
+          <div class="dm-label">Volunteer Hours Logged</div>
+          <div class="dm-value" id="dm-hours">14</div>
+          <div class="dm-sub">hours of your time given this year</div>
+          <div class="dm-action"><button class="dm-link" onclick="toggleVolForm()">+ Record new hours ↗</button></div>
+        </div>
+        <div class="dash-metric" style="--forest:#C4872D">
+          <div class="dm-label">Money Donated This Year</div>
+          <div class="dm-value">$275</div>
+          <div class="dm-sub">includes your membership fee and any extra gifts</div>
+          <div class="dm-action"><button class="dm-link" onclick="nav('support')">Give again ↗</button></div>
+        </div>
+        <div class="dash-metric">
+          <div class="dm-label">Events You've Attended</div>
+          <div class="dm-value">3</div>
+          <div class="dm-sub">events this year</div>
+          <div class="dm-action"><button class="dm-link" onclick="scrollToDash('events')">See what's coming up ↗</button></div>
+        </div>
+        <div class="dash-metric">
+          <div class="dm-label">Hours Waiting for Approval</div>
+          <div class="dm-value">6</div>
+          <div class="dm-sub">your board lead will review these soon</div>
+          <div class="dm-action"><button class="dm-link" onclick="scrollToDash('volunteer')">See full log ↗</button></div>
+        </div>
+      </div>
+
+      <div class="log-vol-form" id="vol-form">
+        <h3 style="font-size:1rem;color:var(--charcoal);margin-bottom:1rem">Record Your Volunteer Hours</h3>
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.25rem">Fill in what you did and when. Your committee lead will review and approve it — usually within a few days.</p>
+        <div class="form-row">
+          <div class="form-group"><label>What date did you volunteer?</label><input type="date" id="vf-date"></div>
+          <div class="form-group"><label>How many hours?</label><input type="number" id="vf-hours" min=".5" step=".5" placeholder="e.g. 2.5"></div>
+        </div>
+        <div class="form-group"><label>What did you work on?</label><input type="text" id="vf-activity" placeholder="e.g. Helped fix up the house on Pine St."></div>
+        <div class="form-group"><label>Who was your committee lead? (if you have one)</label><input type="text" id="vf-lead" placeholder="Name of the person overseeing you"></div>
+        <div class="form-group"><label>Any extra notes? (optional)</label><textarea id="vf-notes" placeholder="Anything else we should know about your time…" style="min-height:70px"></textarea></div>
+        <div style="display:flex;gap:.75rem">
+          <button class="btn-next" style="padding:9px 22px;font-size:.88rem" onclick="submitVolTime()">Submit My Hours</button>
+          <button class="btn-back" onclick="toggleVolForm()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- MAIN DASHBOARD PANELS -->
+      <div class="dash-main">
+
+        <!-- Impact Map -->
+        <div class="dash-panel" id="dash-map">
+          <h3>Ashe CLT Property Map</h3>
+          <div class="map-filters">
+            <button class="map-filter active" onclick="setMapFilter(this,'all')">All</button>
+            <button class="map-filter" onclick="setMapFilter(this,'properties')">Properties</button>
+            <button class="map-filter" onclick="setMapFilter(this,'events')">Events</button>
+            <button class="map-filter" onclick="setMapFilter(this,'completed')">Completed</button>
+            <button class="map-filter" onclick="setMapFilter(this,'considering')">Under Consideration</button>
+          </div>
+          <div class="map-container">
+            <div class="map-placeholder">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4C16.268 4 10 10.268 10 18C10 28 24 44 24 44C24 44 38 28 38 18C38 10.268 31.732 4 24 4Z" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="18" r="5" stroke="currentColor" stroke-width="2"/></svg>
+              <p>Interactive Map</p>
+              <small>Property and event locations will appear here once integrated with your mapping provider (Leaflet.js / Google Maps recommended)</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Membership Status -->
+        <div class="dash-panel" id="dash-membership">
+          <h3>Membership Status</h3>
+          <div class="mem-status-card">
+            <div class="ms-row"><span style="font-weight:600;color:var(--charcoal)">Regular Member</span><span class="mem-type-badge">✓ Can Vote</span></div>
+            <div class="ms-detail" style="margin-top:.85rem">
+              <div class="ms-detail-item"><div class="ms-key">Member Since</div><div class="ms-val">March 2024</div></div>
+              <div class="ms-detail-item"><div class="ms-key">Membership Type</div><div class="ms-val">Regular</div></div>
+              <div class="ms-detail-item"><div class="ms-key">Renews</div><div class="ms-val">March 2026</div></div>
+            </div>
+          </div>
+          <div class="mem-actions">
+            <button class="btn-mem-action">Change My Membership</button>
+            <button class="btn-mem-action danger">Cancel Membership</button>
+          </div>
+
+          <div style="margin-top:1.5rem">
+            <h3 style="font-size:1rem;margin-bottom:1rem">My Contact Information <button onclick="editProfile()">Edit</button></h3>
+            <div class="profile-display" id="profile-display">
+              <div class="pd-item"><div class="pd-key">Name</div><div class="pd-val">Jane Smith</div></div>
+              <div class="pd-item"><div class="pd-key">Email</div><div class="pd-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ec868d8289ac89818d8580c28f8381">[email&#160;protected]</a></div></div>
+              <div class="pd-item"><div class="pd-key">Phone</div><div class="pd-val">(336) 555-0192</div></div>
+              <div class="pd-item"><div class="pd-key">Address</div><div class="pd-val">123 Blue Ridge Way, Jefferson, NC 28640</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Votes -->
+        <div class="dash-panel" id="dash-votes">
+          <h3>Open Community Votes</h3>
+          <div id="votes-section">
+            <div class="vote-item">
+              <h4>2025 Annual Budget</h4>
+              <p>Take a look at the proposed budget for this year and let us know what you think.</p>
+              <div class="vote-options">
+                <button class="vote-btn" onclick="castVote(this,'yes')">✓ I approve this</button>
+                <button class="vote-btn" onclick="castVote(this,'no')">✕ I do not approve</button>
+                <button class="vote-btn" onclick="castVote(this,'abs')">— I'd rather not vote</button>
+              </div>
+            </div>
+            <div class="vote-item">
+              <h4>New Board Member — Community Seat</h4>
+              <p>A new community representative has been proposed for the board. Cast your vote below.</p>
+              <div class="vote-options">
+                <button class="vote-btn" onclick="castVote(this,'yes')">✓ I approve</button>
+                <button class="vote-btn" onclick="castVote(this,'no')">✕ I do not approve</button>
+                <button class="vote-btn" onclick="castVote(this,'abs')">— I'd rather not vote</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volunteer Log -->
+        <div class="dash-panel" id="volunteer">
+          <h3>My Volunteer Hours <button onclick="toggleVolForm()">+ Record Hours</button></h3>
+          <div id="vol-log">
+            <div class="vol-item"><div class="vol-info"><h4>Home repairs — Pine St. property</h4><p>April 2, 2025 · 4 hours</p></div><span class="vol-badge approved">Approved ✓</span></div>
+            <div class="vol-item"><div class="vol-info"><h4>Community outreach table</h4><p>March 22, 2025 · 3 hours</p></div><span class="vol-badge approved">Approved ✓</span></div>
+            <div class="vol-item"><div class="vol-info"><h4>Annual meeting setup</h4><p>March 15, 2025 · 4 hours</p></div><span class="vol-badge approved">Approved ✓</span></div>
+            <div class="vol-item"><div class="vol-info"><h4>Grant writing help</h4><p>April 10, 2025 · 3 hours</p></div><span class="vol-badge pending">Waiting for approval</span></div>
+            <div class="vol-item"><div class="vol-info"><h4>Board meeting notes</h4><p>April 18, 2025 · 3 hours</p></div><span class="vol-badge pending">Waiting for approval</span></div>
+          </div>
+        </div>
+
+        <!-- Expenses (committee members) -->
+        <div class="dash-panel" id="dash-expenses">
+          <h3>My Expense Requests <button onclick="newExpense()">+ New Request</button></h3>
+          <div class="expense-item"><div class="exp-info"><h4>Printing costs — community flyers</h4><p>April 3, 2025 · Outreach Committee</p></div><div style="text-align:right"><div class="exp-amount">$24.50</div><div class="exp-status submitted">Submitted</div></div></div>
+          <div class="expense-item"><div class="exp-info"><h4>Mileage — property visits (3 trips)</h4><p>March 28, 2025 · Properties Committee</p></div><div style="text-align:right"><div class="exp-amount">$41.20</div><div class="exp-status approved">Approved ✓</div></div></div>
+          <div class="expense-item"><div class="exp-info"><h4>Supplies — annual meeting</h4><p>March 10, 2025 — <em>Not yet submitted</em></p></div><div style="text-align:right"><div class="exp-amount">$38.00</div><div class="exp-status draft">Draft</div></div></div>
+        </div>
+
+        <!-- Events -->
+        <div class="dash-panel" id="events">
+          <h3>Upcoming Events</h3>
+          <div class="event-item"><div class="event-date"><div class="ed-mo">May</div><div class="ed-day">14</div></div><div class="event-info"><h4>Home Buying Information Night</h4><p>Jefferson Community Center · 6:00 PM · Free to attend</p><button class="ev-reg" onclick="registerEvent(this)">Sign me up →</button></div></div>
+          <div class="event-item"><div class="event-date"><div class="ed-mo">May</div><div class="ed-day">22</div></div><div class="event-info"><h4>Spring Volunteer Work Day</h4><p>Pine St. Property · 8:00 AM – 3:00 PM</p><span class="ev-registered">✓ You're signed up!</span></div></div>
+          <div class="event-item"><div class="event-date"><div class="ed-mo">Jun</div><div class="ed-day">7</div></div><div class="event-info"><h4>Annual Members Meeting</h4><p>Ashe County Civic Center · 10:00 AM</p><button class="ev-reg" onclick="registerEvent(this)">Sign me up →</button></div></div>
+        </div>
+
+        <!-- Documents & Records -->
+        <div class="dash-panel">
+          <h3>Important Documents</h3>
+          <div class="doc-item"><div class="doc-icon">📋</div><div class="doc-info"><h4>Member Handbook</h4><p>Everything you need to know as a member — updated January 2025</p></div><button class="doc-download" onclick="alert('Download: Member_Handbook_2025.pdf')">Download</button></div>
+          <div class="doc-item"><div class="doc-icon">📄</div><div class="doc-info"><h4>Sample Ground Lease Agreement</h4><p>How the land trust homeownership works — for people interested in buying a home</p></div><button class="doc-download" onclick="alert('Download: Ground_Lease_Sample.pdf')">Download</button></div>
+          <div class="doc-item"><div class="doc-icon">📊</div><div class="doc-info"><h4>2024 Annual Report</h4><p>What we accomplished last year and how we spent our money</p></div><button class="doc-download" onclick="alert('Download: Annual_Report_2024.pdf')">Download</button></div>
+          <div class="doc-item"><div class="doc-icon">🗂</div><div class="doc-info"><h4>Board Meeting Notes</h4><p>Published after each board meeting</p></div><button class="doc-download" onclick="alert('Opens board minutes page')">View All</button></div>
+          <div class="doc-item" style="background:var(--forest-pale);padding:.85rem;border-radius:var(--radius);border-bottom:none"><div class="doc-icon">🔗</div><div class="doc-info"><h4>Committee Shared Folder (Google Drive)</h4><p>For committee members only — your shared working documents</p></div><button class="doc-download" onclick="alert('Opens Google Drive workspace')">Open Folder</button></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="margin-bottom:1.25rem;display:flex;align-items:center;gap:14px">
+          <img src="https://kbvafhwsftrocnfxtfbg.supabase.co/storage/v1/object/public/publicimages/ACLT_Main%20Logo_Full%20Color(1).svg" alt="Ashe Community Land Trust" style="height:72px;width:72px;flex-shrink:0">
+          <div>
+            <div style="color:var(--white);font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.2">Ashe Community<br>Land Trust</div>
+            <div style="color:rgba(255,255,255,.45);font-size:.75rem;margin-top:.2rem">Building Roots in the High Country</div>
+          </div>
+        </div>
+        <p>Building permanently affordable homes in Ashe County, NC — so the people who make our community special can afford to stay.</p>
+        <a href="#" class="footer-donate" onclick="nav('support')">❤ Donate or Join Today</a>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="#" onclick="nav('home')">Home</a></li><li><a href="#" onclick="nav('about')">Our Story</a></li><li><a href="#" onclick="nav('how')">How It Works</a></li><li><a href="#" onclick="nav('support')">Join / Give</a></li></ul></div>
+      <div class="footer-col"><h4>For Families</h4><ul><li><a href="#" onclick="nav('how')">Apply for a Home</a></li><li><a href="#" onclick="nav('how')">Homebuyer FAQ</a></li><li><a href="#" onclick="nav('how')">Ground Lease Info</a></li></ul></div>
+      <div class="footer-col"><h4>Support Us</h4><ul><li><a href="#" onclick="nav('support')">Make a Donation</a></li><li><a href="#" onclick="nav('support')">Join as a Member</a></li><li><a href="#" onclick="nav('support')">Monthly Giving</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div><p>© 2025 Ashe Community Land Trust. All rights reserved.</p><p class="footer-tax">501(c)(3) nonprofit · All donations tax-deductible · EIN: [INSERT]</p></div>
+      <button class="admin-toggle" onclick="toggleAdmin()" title="Site Administration">&#9965;</button>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating donate (not shown on support/dashboard pages) -->
+<a href="#" class="float-donate" id="floatDonate" onclick="nav('support')">❤ Donate</a>
+
+<!-- ═════════ CMS OVERLAY ═════════ -->
+<div id="cms-overlay">
+  <div class="cms-panel">
+    <div class="cms-hdr"><h2>Ashe CLT Content Manager</h2><button class="cms-x" onclick="closeCMS()">✕</button></div>
+    <div class="cms-tabs-row">
+      <button class="cms-t active" onclick="cmsTab('general',this)">General</button>
+      <button class="cms-t" onclick="cmsTab('stories',this)">Stories</button>
+      <button class="cms-t" onclick="cmsTab('news',this)">News & Updates</button>
+      <button class="cms-t" onclick="cmsTab('team',this)">Team</button>
+      <button class="cms-t" onclick="cmsTab('stats',this)">Stats</button>
+    </div>
+    <div class="cms-body">
+      <div class="cms-sec active" id="cms-general">
+        <div class="cms-field"><label>Hero Headline</label><input type="text" id="cx-hero-hl" value="A Home in the Mountains — Yours to Keep."></div>
+        <div class="cms-field"><label>Hero Sub-headline</label><textarea id="cx-hero-sub">Ashe CLT helps working families own safe, affordable homes — permanently. No displacement. Just community taking care of its own.</textarea></div>
+        <div class="cms-field"><label>Donate Banner Headline</label><input type="text" id="cx-db-hl" value="Your donation builds a home that lasts forever."></div>
+        <div class="cms-field"><label>Donate Banner Body</label><textarea id="cx-db-sub">Every gift helps us acquire land, renovate homes, and support families. 100% tax-deductible.</textarea></div>
+        <div class="cms-field"><label>Leadership Transition Message (team section)</label><textarea id="cx-team-msg">During our current leadership transition, our board and staff remain fully committed to our mission. Our programs and services continue without interruption.</textarea></div>
+        <div class="cms-field"><label>About Page Body Text</label><textarea id="cx-about-body">Rising home prices are pushing out the people who define Ashe County — the teachers, farmers, healthcare workers, and longtime families whose roots run deep in these mountains. Ashe CLT was formed to make sure those people have a place to stay.</textarea></div>
+      </div>
+      <div class="cms-sec" id="cms-stories">
+        <button class="cms-add-btn" onclick="addStory()">+ Add Story</button>
+        <div id="cms-stories-list"></div>
+      </div>
+      <div class="cms-sec" id="cms-news">
+        <button class="cms-add-btn" onclick="addNews()">+ Add Update</button>
+        <div id="cms-news-list"></div>
+      </div>
+      <div class="cms-sec" id="cms-team">
+        <button class="cms-add-btn" onclick="addTeam()">+ Add Team Member</button>
+        <div id="cms-team-list"></div>
+      </div>
+      <div class="cms-sec" id="cms-stats">
+        <div class="cms-2col">
+          <div class="cms-field"><label>Families Housed (hero card)</label><input type="text" id="cx-s-homes" value="12+"></div>
+          <div class="cms-field"><label>Avg. Savings/Family (hero card)</label><input type="text" id="cx-s-savings" value="$180K"></div>
+        </div>
+        <div class="cms-2col">
+          <div class="cms-field"><label>Cost-Burdened Renters %</label><input type="text" id="cx-st1" value="47%"></div>
+          <div class="cms-field"><label>Home Price Rise %</label><input type="text" id="cx-st2" value="68%"></div>
+        </div>
+        <div class="cms-field"><label>CLT Foreclosure Prevention %</label><input type="text" id="cx-st3" value="99%"></div>
+      </div>
+    </div>
+    <div class="cms-footer">
+      <span class="cms-note">Changes apply instantly to the page preview. Refresh-safe: connect to your backend to persist across sessions.</span>
+      <button class="cms-save-btn" onclick="cmsApply()">Save All Changes</button>
+    </div>
+  </div>
+</div>
+<div class="cms-toast" id="toast">✓ Content updated successfully</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── SITE DATA ──
+const D = {
+  stories: [
+    {name:"Maria & Carlos T.",detail:"West Jefferson, NC — moved in 2023",quote:"We never thought we could afford to stay in Ashe County. Now our kids can grow up here, in the schools and community where we grew up.",photo:"https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80"},
+    {name:"The Johnson Family",detail:"Jefferson, NC — moved in 2022",quote:"The process was clear and fair. The support from Ashe CLT was unlike anything we expected from a housing organization.",photo:"https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"},
+    {name:"Denise W.",detail:"Lansing, NC — moved in 2024",quote:"As a single mom, I never thought homeownership was possible for me. Now I have a yard for my daughter and a mortgage I can actually afford.",photo:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80"}
+  ],
+  news: [
+    {tag:"Announcement",title:"Ashe CLT Breaks Ground on Third Property",body:"We're thrilled to announce the groundbreaking for our newest CLT home on Ashe Street in West Jefferson. Construction begins this spring.",date:"March 2025"},
+    {tag:"Community",title:"Homebuyer Info Session — Register Now",body:"Join us for a free session to learn about the CLT model and whether a CLT home is right for you.",date:"April 2025"},
+    {tag:"Partnership",title:"New USDA Rural Development Partnership",body:"Ashe CLT has been selected as a partner in a USDA rural housing initiative, bringing new funding for land acquisition.",date:"February 2025"}
+  ],
+  team: [
+    {name:"Board Chair",role:"Board of Directors",bio:"Deep roots in Ashe County with decades of community development experience.",initials:"BC"},
+    {name:"Interim Executive Director",role:"Executive (Interim)",bio:"Providing steady leadership and continuity during our transition period.",initials:"ID"},
+    {name:"Housing Coordinator",role:"Programs Staff",bio:"Working directly with families through every step of the homebuying process.",initials:"HC"},
+    {name:"Community Liaison",role:"Outreach",bio:"Connecting Ashe CLT with residents and community organizations across the county.",initials:"CL"}
+  ]
+};
+
+// ── FLOW STATE ──
+let flowState = {type:'',inCounty:false,membership:null,step:1};
+let adminMode = false;
+let loggedIn = false;
+
+// ── NAVIGATION ──
+function nav(page) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  window.scrollTo(0,0);
+  // highlight nav
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const nl = document.getElementById('nl-'+page);
+  if(nl) nl.classList.add('active');
+  // floating donate visibility
+  const fd = document.getElementById('floatDonate');
+  fd.style.display = (page==='support'||page==='dashboard') ? 'none' : 'flex';
+  // support page: reset flow
+  if(page==='support') resetFlow();
+}
+
+function toggleFAQ(el){el.closest('.faq-item').classList.toggle('open')}
+
+// ── LOGIN SIM ──
+function simulateLogin(){
+  loggedIn = true;
+  document.getElementById('signinBtn').textContent='My Dashboard';
+  document.getElementById('signinBtn').onclick=()=>nav('dashboard');
+  document.getElementById('nl-dash').style.display='block';
+}
+
+// ── SUPPORT FLOW ──
+let selectedType = null, selectedMem = null;
+
+function resetFlow(){
+  flowState={type:'',inCounty:false,membership:null,step:1};
+  selectedType=null; selectedMem=null;
+  goStep(1,true);
+}
+
+function selectType(type, el){
+  selectedType = type;
+  document.querySelectorAll('.type-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btn-s1-next').disabled=false;
+  flowState.type = type;
+  document.getElementById('org-name-field').style.display = type==='organization'?'block':'none';
+}
+
+function checkCountyStatus(){
+  const county = document.getElementById('addr-county').value.toLowerCase();
+  const zip = document.getElementById('addr-zip').value;
+  const asheZips=['28640','28694','28671','28615','28627','28634','28649'];
+  const inCounty = county.includes('ashe') || asheZips.includes(zip);
+  flowState.inCounty = inCounty;
+  const note = document.getElementById('county-note');
+  if(county || zip.length===5){
+    note.style.display='block';
+    note.innerHTML = inCounty
+      ? '<span style="background:var(--success-light);color:var(--success);padding:6px 14px;border-radius:50px;font-size:.83rem;font-weight:600">✓ Ashe County resident — all membership options available</span>'
+      : '<span style="background:var(--info-light);color:var(--info);padding:6px 14px;border-radius:50px;font-size:.83rem;font-weight:600">ℹ Outside Ashe County — Supporting Membership and One-Time Gift available</span>';
+  }
+}
+
+const ALL_MEMBERSHIPS = [
+  {id:'regular',name:'Regular Membership',price:'$50/year',desc:'Full voting rights. For Ashe County individuals.',features:['Voting rights','Member dashboard','Event access','Impact map','Documents & records'],asheOnly:true,orgOnly:false,featured:false},
+  {id:'sweat',name:'Sweat Equity Membership',price:'Free (hours-based)',desc:'Volunteer labor in lieu of dues. Ashe County individuals only.',features:['Voting rights','Member dashboard','Commit volunteer hours','All Regular benefits'],asheOnly:true,orgOnly:false,featured:false},
+  {id:'supporting',name:'Supporting Membership',price:'$100/year',desc:'Support without voting. Open to everyone.',features:['Member dashboard','Event access','Tax receipt','Documents & records'],asheOnly:false,orgOnly:false,featured:true},
+  {id:'gift',name:'One-Time Gift',price:'Any amount',desc:'Make a direct donation via Zeffy. No account required.',features:['4 quick-amount options','Custom amount','Email confirmation','Tax receipt'],asheOnly:false,orgOnly:false,featured:false}
+];
+
+function buildMembershipGrid(){
+  const isOrg = flowState.type==='organization';
+  const inCounty = flowState.inCounty;
+  const grid = document.getElementById('mem-options-grid');
+  const sub = document.getElementById('fp3-sub');
+
+  let shown = ALL_MEMBERSHIPS.filter(m=>{
+    if(isOrg) return m.id==='supporting'||m.id==='gift';
+    if(!inCounty) return m.id==='supporting'||m.id==='gift';
+    return true;
+  });
+
+  sub.textContent = isOrg || !inCounty
+    ? 'Organizations and out-of-county members may choose Supporting Membership or a One-Time Gift.'
+    : 'As an Ashe County resident, you have access to all four options below.';
+
+  grid.innerHTML = shown.map(m=>`
+    <div class="mem-card${m.featured?' featured':''}" onclick="selectMem('${m.id}',this)">
+      ${m.featured?'<div class="mem-badge">Most Popular</div>':''}
+      <h3>${m.name}</h3>
+      <div class="mem-price">${m.price.includes('/')? '<span>From </span>':'' }${m.price}</div>
+      <p style="font-size:.8rem;color:var(--muted);margin:.5rem 0 .85rem">${m.desc}</p>
+      <ul>${m.features.map(f=>`<li>${f}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+}
+
+function selectMem(id, el){
+  selectedMem = id;
+  document.querySelectorAll('.mem-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btn-s3-next').disabled = false;
+  flowState.membership = id;
+}
+
+function goStep(n, silent){
+  if(n===3) buildMembershipGrid();
+  if(n===4) buildStep4();
+  if(n===5) buildStep5();
+
+  document.querySelectorAll('.flow-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('fp-'+n).classList.add('active');
+
+  document.querySelectorAll('.flow-step').forEach((s,i)=>{
+    s.classList.remove('active','done');
+    if(i+1 < n) s.classList.add('done');
+    if(i+1 === n) s.classList.add('active');
+  });
+  flowState.step = n;
+  if(!silent) window.scrollTo(0,300);
+}
+
+function buildStep4(){
+  const id = flowState.membership;
+  const title = document.getElementById('fp4-title');
+  const sub = document.getElementById('fp4-sub');
+  document.getElementById('se-box').style.display = id==='sweat'?'block':'none';
+  document.getElementById('account-form').style.display = id==='gift'?'none':'block';
+  document.getElementById('no-account-msg').style.display = id==='gift'?'block':'none';
+  if(id==='gift'){
+    title.textContent='Almost there!';
+    sub.textContent='You\'re just one step away. No account needed — just click Next to go to the payment page.';
+  } else {
+    title.textContent='Set up your account';
+    sub.textContent='Your account lets you log in anytime to see your membership, record volunteer hours, vote on community decisions, and more. It only takes a minute.';
+  }
+}
+
+function buildStep5(){
+  const id = flowState.membership;
+  const t = document.getElementById('zeffy-title');
+  const d = document.getElementById('zeffy-desc');
+  const qa = document.getElementById('quick-amounts');
+  const ca = document.getElementById('custom-amount-row');
+  if(id==='gift'){
+    t.textContent='How much would you like to give?';
+    d.textContent='Pick one of the amounts below, or type in your own. Every dollar goes directly to affordable housing in Ashe County.';
+    qa.style.display='flex'; ca.style.display='flex';
+  } else {
+    const mem = ALL_MEMBERSHIPS.find(m=>m.id===id);
+    t.textContent='Ready to complete your membership?';
+    d.textContent=`Your ${mem.name} costs ${mem.price}. Click the button below and you'll be taken to our secure payment page to finish up.`;
+    qa.style.display='none'; ca.style.display='none';
+  }
+}
+
+function selectQA(btn, amt){
+  document.querySelectorAll('.qa-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('custom-amt').value='';
+}
+
+// ── DASHBOARD ──
+function toggleVolForm(){
+  const f = document.getElementById('vol-form');
+  f.classList.toggle('open');
+  f.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function submitVolTime(){
+  const hrs = parseFloat(document.getElementById('vf-hours').value)||0;
+  const act = document.getElementById('vf-activity').value||'Volunteer activity';
+  const dt = document.getElementById('vf-date').value;
+  const log = document.getElementById('vol-log');
+  log.insertAdjacentHTML('beforeend',`<div class="vol-item"><div class="vol-info"><h4>${act}</h4><p>${dt} · ${hrs} hours · Submitted by Jane</p></div><span class="vol-badge pending">Pending Approval</span></div>`);
+  // update counter
+  const cur = parseInt(document.getElementById('dm-hours').textContent)||0;
+  document.getElementById('dm-hours').textContent = cur+hrs;
+  toggleVolForm();
+  showToast('Hours submitted for approval!');
+}
+
+function castVote(btn, choice){
+  const row = btn.closest('.vote-options');
+  row.querySelectorAll('.vote-btn').forEach(b=>{b.classList.remove('voted-yes','voted-no','voted-abs')});
+  btn.classList.add('voted-'+choice);
+  showToast('Vote recorded.');
+}
+
+function registerEvent(btn){
+  const info = btn.closest('.event-info');
+  btn.remove();
+  info.insertAdjacentHTML('beforeend','<span class="ev-registered">✓ Registered</span>');
+  showToast('Registered for event!');
+}
+
+function newExpense(){
+  const list = document.getElementById('dash-expenses').querySelector('.expense-item');
+  // Simple demo: inject a draft
+  list.insertAdjacentHTML('beforebegin',`<div class="expense-item"><div class="exp-info"><h4>New expense (draft)</h4><p>Today · Your Committee</p></div><div style="text-align:right"><div class="exp-amount">$0.00</div><div class="exp-status draft">Draft</div></div></div>`);
+  showToast('New expense report created.');
+}
+
+function setMapFilter(btn, filter){
+  document.querySelectorAll('.map-filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function scrollToDash(id){
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+function editProfile(){
+  alert('Profile editing form — integrate with your backend to update member data in real time.');
+}
+
+// ── ADMIN / CMS ──
+
+// ── CMS AUTHENTICATION ──────────────────────────────────────────────
+// SHA-256 hash of the admin password (password itself is NOT stored here)
+
+const CMS_PW_HASH = '5c7ee0df0223256ea180c9c13bc94ed129bea7b1dd243cbfe4b480f57ecf62fc';
+const CMS_SESSION_KEY = 'asheclt_cms_auth';
+const CMS_SESSION_TTL = 2 * 60 * 60 * 1000; // 2 hours in ms
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function cmsIsAuthenticated() {
+  try {
+    const raw = sessionStorage.getItem(CMS_SESSION_KEY);
+    if (!raw) return false;
+    const {token, expires} = JSON.parse(raw);
+    if (Date.now() > expires) { sessionStorage.removeItem(CMS_SESSION_KEY); return false; }
+    return token === CMS_PW_HASH;
+  } catch { return false; }
+}
+
+function cmsSetSession() {
+  sessionStorage.setItem(CMS_SESSION_KEY, JSON.stringify({
+    token: CMS_PW_HASH,
+    expires: Date.now() + CMS_SESSION_TTL
+  }));
+}
+
+function cmsLogout() {
+  sessionStorage.removeItem(CMS_SESSION_KEY);
+  adminMode = false;
+  document.getElementById('cmsBar').classList.remove('show');
+  showToast('Signed out of CMS.');
+}
+
+function toggleAdmin() {
+  if (cmsIsAuthenticated()) {
+    // Already signed in — toggle bar off
+    cmsLogout();
+  } else {
+    // Show login modal
+    document.getElementById('cms-login-overlay').classList.add('open');
+    setTimeout(()=>document.getElementById('cms-pw-input').focus(), 100);
+  }
+}
+
+async function cmsDoLogin() {
+  const btn = document.getElementById('cms-login-btn');
+  const input = document.getElementById('cms-pw-input');
+  const errEl = document.getElementById('cms-login-error');
+  const pw = input.value;
+  if (!pw) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+  input.classList.remove('error');
+  errEl.classList.remove('show');
+
+  const hash = await sha256(pw);
+
+  if (hash === CMS_PW_HASH) {
+    cmsSetSession();
+    adminMode = true;
+    document.getElementById('cms-login-overlay').classList.remove('open');
+    document.getElementById('cmsBar').classList.add('show');
+    // Update session timer display
+    const expires = new Date(Date.now() + CMS_SESSION_TTL);
+    const timeStr = expires.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const sessionEl = document.getElementById('cms-session-display');
+    if (sessionEl) sessionEl.textContent = `Session active · expires at ${timeStr}`;
+    input.value = '';
+    showToast('Signed in to CMS. Session expires in 2 hours.');
+  } else {
+    input.classList.add('error');
+    errEl.classList.add('show');
+    input.value = '';
+    input.focus();
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Sign In to CMS';
+}
+
+// Close login modal on backdrop click
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('cms-login-overlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+  // Restore session if still valid on load
+  if (cmsIsAuthenticated()) {
+    adminMode = true;
+    document.getElementById('cmsBar').classList.add('show');
+  }
+});
+
+
+function openCMS(){
+  document.getElementById('cms-overlay').classList.add('open');
+  buildCMSLists();
+}
+
+function closeCMS(){document.getElementById('cms-overlay').classList.remove('open')}
+
+function cmsTab(id, btn){
+  document.querySelectorAll('.cms-t').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.cms-sec').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('cms-'+id).classList.add('active');
+}
+
+function buildCMSLists(){
+  // Stories
+  document.getElementById('cms-stories-list').innerHTML = D.stories.map((s,i)=>`
+    <div class="cms-item-card">
+      <div class="cms-item-hdr"><h4>Story ${i+1}: ${s.name}</h4><button class="cms-del" onclick="removeItem('stories',${i})">Remove</button></div>
+      <div class="cms-2col">
+        <div class="cms-field"><label>Name</label><input value="${s.name}" onchange="D.stories[${i}].name=this.value"></div>
+        <div class="cms-field"><label>Detail / Location</label><input value="${s.detail}" onchange="D.stories[${i}].detail=this.value"></div>
+      </div>
+      <div class="cms-field"><label>Quote</label><textarea onchange="D.stories[${i}].quote=this.value">${s.quote}</textarea></div>
+      <div class="cms-field"><label>Photo URL</label><input value="${s.photo}" onchange="D.stories[${i}].photo=this.value"></div>
+    </div>`).join('');
+  // News
+  document.getElementById('cms-news-list').innerHTML = D.news.map((n,i)=>`
+    <div class="cms-item-card">
+      <div class="cms-item-hdr"><h4>Update ${i+1}: ${n.title}</h4><button class="cms-del" onclick="removeItem('news',${i})">Remove</button></div>
+      <div class="cms-2col">
+        <div class="cms-field"><label>Tag</label><input value="${n.tag}" onchange="D.news[${i}].tag=this.value"></div>
+        <div class="cms-field"><label>Date</label><input value="${n.date}" onchange="D.news[${i}].date=this.value"></div>
+      </div>
+      <div class="cms-field"><label>Title</label><input value="${n.title}" onchange="D.news[${i}].title=this.value"></div>
+      <div class="cms-field"><label>Body</label><textarea onchange="D.news[${i}].body=this.value">${n.body}</textarea></div>
+    </div>`).join('');
+  // Team
+  document.getElementById('cms-team-list').innerHTML = D.team.map((m,i)=>`
+    <div class="cms-item-card">
+      <div class="cms-item-hdr"><h4>Team: ${m.name}</h4><button class="cms-del" onclick="removeItem('team',${i})">Remove</button></div>
+      <div class="cms-2col">
+        <div class="cms-field"><label>Name</label><input value="${m.name}" onchange="D.team[${i}].name=this.value"></div>
+        <div class="cms-field"><label>Role</label><input value="${m.role}" onchange="D.team[${i}].role=this.value"></div>
+      </div>
+      <div class="cms-2col">
+        <div class="cms-field"><label>Initials</label><input value="${m.initials}" maxlength="3" onchange="D.team[${i}].initials=this.value"></div>
+        <div class="cms-field"><label>Photo URL (optional)</label><input value="${m.photo||''}" onchange="D.team[${i}].photo=this.value"></div>
+      </div>
+      <div class="cms-field"><label>Bio</label><textarea onchange="D.team[${i}].bio=this.value">${m.bio}</textarea></div>
+    </div>`).join('');
+}
+
+function removeItem(list, i){
+  if(confirm('Remove this item?')){D[list].splice(i,1);buildCMSLists();}
+}
+function addStory(){D.stories.push({name:'New Resident',detail:'Location, NC',quote:'Enter their quote here.',photo:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80'});buildCMSLists();}
+function addNews(){D.news.push({tag:'Update',title:'New Announcement',body:'Enter details.',date:'2025'});buildCMSLists();}
+function addTeam(){D.team.push({name:'Team Member',role:'Role Title',bio:'Brief bio.',initials:'TM',photo:''});buildCMSLists();}
+
+function cmsApply(){
+  // General
+  const map={['cx-hero-hl']:'hero-hl',['cx-hero-sub']:'hero-sub',['cx-db-hl']:'db-hl',['cx-db-sub']:'db-sub',['cx-team-msg']:'team-msg',['cx-about-body']:'about-body',['cx-s-homes']:'s-homes',['cx-s-savings']:'s-savings',['cx-st1']:'st1',['cx-st2']:'st2',['cx-st3']:'st3'};
+  for(const[from,to] of Object.entries(map)){
+    const el=document.getElementById(from),t=document.getElementById(to);
+    if(el&&t)t.textContent=el.value;
+  }
+  renderAll();
+  showToast('All changes saved!');
+}
+
+document.getElementById('cms-overlay').addEventListener('click',function(e){if(e.target===this)closeCMS()});
+
+// ── RENDER ──
+function renderAll(){
+  // Stories
+  document.getElementById('stories-container').innerHTML = D.stories.map(s=>`
+    <div class="story-card">
+      <div class="story-photo"><img src="${s.photo}" alt="${s.name}" onerror="this.parentNode.style.background='#c5dba8'"></div>
+      <div class="story-body">
+        <div class="story-quote">${s.quote}</div>
+        <div class="story-name">${s.name}</div>
+        <div class="story-detail">${s.detail}</div>
+      </div>
+    </div>`).join('');
+  // News
+  document.getElementById('news-container').innerHTML = D.news.map(n=>`
+    <div class="card news-card">
+      <span class="news-tag">${n.tag}</span>
+      <h3>${n.title}</h3>
+      <p>${n.body}</p>
+      <div class="news-date">${n.date}</div>
+    </div>`).join('');
+  // Team
+  document.getElementById('team-container').innerHTML = D.team.map(m=>`
+    <div class="team-card">
+      <div class="team-avatar">${m.photo?`<img src="${m.photo}" style="width:100%;height:100%;object-fit:cover" alt="${m.name}">`:`<div class="team-initials">${m.initials}</div>`}</div>
+      <h3>${m.name}</h3>
+      <div class="team-role">${m.role}</div>
+      <p>${m.bio}</p>
+    </div>`).join('');
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent='✓ '+msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+renderAll();
+</script>
+
+<!-- CMS LOGIN MODAL -->
+<div id="cms-login-overlay">
+  <div class="cms-login-box">
+    <div class="cms-login-logo">
+      <img src="https://kbvafhwsftrocnfxtfbg.supabase.co/storage/v1/object/public/publicimages/Secondary%20Logo.png" alt="Ashe CLT">
+    </div>
+    <h2>Content Manager Login</h2>
+    <p>Enter your admin password to access the Ashe CLT website editor.</p>
+    <div class="cms-login-field">
+      <label>Password</label>
+      <input type="password" id="cms-pw-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')cmsDoLogin()">
+      <div class="cms-login-error" id="cms-login-error">Incorrect password. Please try again.</div>
+    </div>
+    <button class="cms-login-btn" id="cms-login-btn" onclick="cmsDoLogin()">Sign In to CMS</button>
+    <p style
